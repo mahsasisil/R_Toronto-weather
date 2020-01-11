@@ -60,6 +60,10 @@ table(Toronto.data$Toronto.Season,Toronto.data$Toronto.Year)
 
 
 
+
+
+
+
 z=as.Date(Toronto.Time,'%m/%d/%Y');z
 
 
@@ -68,6 +72,18 @@ list=Toronto.data[order(as.Date(Toronto.Time, format='%m/%d/%Y')),]
 range(Toronto.Time)
 
 #------------summer data
+
+tapply(Toronto.Rain,list(Toronto.Year),mean,na.rm=T)
+snow=aggregate(Toronto.data['Toronto.Snow'],by=list(as.Date(Toronto.Time)),FUN = mean,na.rm=T)
+plot(snow,type = "p",main = "average Snow 2013-2016", 
+     sub = "", xlab = "Year", ylab = "Snow CM",
+     col=6, pch=16, cex=3)
+
+
+
+
+
+
 
 tapply(Toronto.Rain,list(Toronto.Year,Toronto.Season),mean,na.rm=T)
 tapply(Toronto.Snow,list(Toronto.Year,Toronto.Season),mean,na.rm=T)
